@@ -1,0 +1,58 @@
+EXPLICATION DE CREATION D'UN PROJET SUR SYMPHONY 5.
+
+1) Crée un projet dans le terminal de commande VSC = composer create-project symfony/website-skeleton nomduprojet 
+
+2) Place toi dans le dossier du projet = cd nomduprojet
+
+3) Modifie le dossier .env = Commente la ligne 31, puis décommente la ligne 30 et modifie-le = DATABASE_URL="mysql://root:@127.0.0.1:3306/nomduprojet"
+
+4) Crée la Base de donnée (BDD) = php bin/console doctrine:database:create 
+
+5) Vérifie quelle est bien crée dans phpMyAdmin. 
+
+5) Crée la table (entity) = php bin/console make:entity nomdelatable
+
+6) Affecter les champs à notre table
+
+7) Faire la migration de notre entity (après creation verifier) = php bin/console make:migration puis php bin/console doctrine:make:migration 
+
+8) Inserer les informations dans la BDD 
+
+9) Creer la page d'accueil = php bin/console make:controller
+
+10) Renommer : la route @Route("/", name="accueil") / la page index -> accueil 
+
+11) Lancer le serveur = php -S localhost:8000 -t public 
+
+12) Faire les modifications du fichier base.html.twig (Bootstrap, css, template)
+
+13) Creation d'un fichier entete puis faire un include dans le fichier base (pour organiser le travail)
+
+14) Tous les dossiers que l'on place dans public (css, js, jquery, img, etc...) s'appel grace a la fonction asset et au chemin du fichier. 
+
+15) Pour afficher les données de notre BDD : 
+    - Passer le repository qui correspond en argument de notre function et lui assigner une variable ( exemple : public function affichage(CommentairesRepository $tableCommentaires) ) / utiliser findBY s'il y a des limites ou ordre a afficher. 
+
+16) Afficher les commentaires dans la page grace a une boucle for 
+
+17) Preparer un bouton pour voir le produit unique 
+
+18) Creer une nouvelle fonction "show" pour montrer un élément grâce à son id 
+
+19) Passer l'entité concernnée en argument (exemple : public function show(Commentaires $commentaire)) et bien penser à passer l'id entre accolades dans la route
+
+20) Créer la page show.html.twig dans le dossier et décrire ce qu'on veut afficher. 
+
+21) Pas besoin de boucle for car on affiche un seul élement grace a son id.
+
+22) Penser à mettre le path sur le bouton dans la page commentaires.html.twig
+
+23) Dans le controller Creer une nouvelle fonction pour ajouter ou modifier un commentaire
+
+24) On crée un formulaire pour modifier et créer un nouveau commentaire = php bin/console make:form CommentaireFormType 
+
+25) On prépare le controller.
+
+26) On crée la page newedit dans laquelle on va afficher un formulaire. 
+
+27) On importe Bootstrap pour les formulaires : Config -> Packages -> twig.yaml -> twig -> form_themes: ['bootstrap_5_layout.html.twig']
